@@ -15,6 +15,7 @@ fs.createReadStream(trialBalanceFile)
     });
   })
   .on("end", () => {
+    console.log(accounts,'accounts')
     generateReports(accounts);
   });
 
@@ -25,25 +26,35 @@ function generateReports(accounts) {
     totalLiabilities = 0,
     totalCapital = 0;
 
-  accounts.forEach(({ account, debit, credit }) => {
-    if (account.toLowerCase().includes("sales")) {
+  accounts?.forEach(({ account, debit, credit }) => {
+    if (account.toLowerCase().includes("sales accounts")|| account.toLowerCase().includes("direct incomes")||account.toLowerCase().includes("indirect incomes")) {
       totalIncome += credit;
     } else if (
-      account.toLowerCase().includes("rent") ||
-      account.toLowerCase().includes("salaries") ||
-      account.toLowerCase().includes("inventory")
+      account.toLowerCase().includes("direct expenses") ||
+      account.toLowerCase().includes("indirect expenses")||
+      account.toLowerCase().includes("purchase accounts")
     ) {
       totalExpenses += debit;
-    } else if (account.toLowerCase().includes("cash")) {
-      totalAssets += credit;
+      totalExpenses -= credit;
+    } else if (account.toLowerCase().includes("fixed assets")||account.toLowerCase().includes("current assets")) {
+      totalAssets += debit;
     } else if (
-      account.toLowerCase().includes("accounts payable") ||
-      account.toLowerCase().includes("loan")
+      account.toLowerCase().includes("profit & loss a/c") ||
+      account.toLowerCase().includes("loans")
     ) {
       totalLiabilities += credit;
     } else if (account.toLowerCase().includes("capital")) {
       totalCapital += credit;
+    // } else if (account.toLowerCase().includes("purchase accounts")) {
+    //   totalExpenses -= credit;
+    } else if (account.toLowerCase().includes("indirect expenses")) {
+      totalExpenses -= credit;
+    } else if (account.toLowerCase().includes("closing stock")) {
+      totalIncome += debit;
+    } else if (account.toLowerCase().includes("opening stock")) {
+      totalExpenses += debit;
     }
+    
   });
 
   // Calculate Net Profit/Loss

@@ -1,9 +1,15 @@
 Account,Debit,Credit
-Sales,0,50000
-Rent,10000,0
-Salaries,20000,0
-Inventory,5000,0
-Accounts Payable,0,8000
-Cash,0,10000
-Bank Loan,0,20000
-Capital,0,25000
+Loans,1350536.65,8703572
+Capital,0,30000
+Current Liabilities,34371347.6,57759177.03
+Fixed Assets,5375312,0
+Current Assets,33715358.38,2711653.54
+Sales Accounts,0,401043526.77
+Purchase Accounts,376802452.15,4988
+Direct Incomes,0,452439.72
+Direct Expenses,23936.56,0
+Indirect Incomes,0,3004205.07
+Indirect Expenses,24264616.19,73450.4
+Profit & Loss A/c,0,167135.08
+Closing Stock,21642781.44,0
+Opening Stock,17940453,0

@@ -58,3 +58,6 @@ const trialBalance = [
   const pnl = await generatePL(trialBalance);
   console.log("Profit & Loss Statement:", pnl);
 })();
+
+
+//7187587
